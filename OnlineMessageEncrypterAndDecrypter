@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Code Message Sender</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #4a4a4a;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"], input[type="password"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #6a1b9a; /* Purple button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #4a148c; /* Darker purple on hover */
+        }
+
+        .output {
+            margin-top: 20px;
+            background-color: #e1bee7; /* Light peach for output */
+            padding: 15px;
+            border-radius: 5px;
+            color: #333333;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Secret Code Message Sender</h2>
+        <textarea id="message" rows="3" placeholder="Enter your message here..."></textarea>
+        <input type="password" id="secretCode" placeholder="Enter secret code (number)">
+        <button onclick="encryptMessage()">Encrypt Message</button>
+        <div class="output" id="encryptedMessage"></div>
+
+        <h2>Message Receiver</h2>
+        <textarea id="receivedMessage" rows="3" placeholder="Enter received encrypted message..."></textarea>
+        <input type="password" id="decryptCode" placeholder="Enter secret code to decrypt">
+        <button onclick="decryptMessage()">Decrypt Message</button>
+        <div class="output" id="decryptedMessage"></div>
+    </div>
+
+    <script>
+        // Function to encrypt the message using Caesar cipher technique
+        function encryptMessage() {
+            const message = document.getElementById('message').value;
+            const secretCode = parseInt(document.getElementById('secretCode').value);
+            let encryptedMessage = '';
+
+            if (isNaN(secretCode)) {
+                alert('Please enter a valid number for the secret code.');
+                return;
+            }
+
+            for (let i = 0; i < message.length; i++) {
+                let charCode = message.charCodeAt(i);
+                encryptedMessage += String.fromCharCode(charCode + secretCode);
+            }
+
+            document.getElementById('encryptedMessage').innerText = 'Encrypted Message: ' + encryptedMessage;
+        }
+
+        // Function to decrypt the message using the same Caesar cipher technique
+        function decryptMessage() {
+            const receivedMessage = document.getElementById('receivedMessage').value;
+            const decryptCode = parseInt(document.getElementById('decryptCode').value);
+            let decryptedMessage = '';
+
+            if (isNaN(decryptCode)) {
+                alert('Please enter a valid number for the secret code.');
+                return;
+            }
+
+            for (let i = 0; i < receivedMessage.length; i++) {
+                let charCode = receivedMessage.charCodeAt(i);
+                decryptedMessage += String.fromCharCode(charCode - decryptCode);
+            }
+
+            document.getElementById('decryptedMessage').innerText = 'Decrypted Message: ' + decryptedMessage;
+        }
+    </script>
+</body>
+</html>
