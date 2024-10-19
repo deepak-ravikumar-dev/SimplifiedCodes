@@ -1,0 +1,17 @@
+# Creating a set
+my_set = {1, 2, 3, 4, 5}
+print("Set:", my_set)
+
+# Adding and removing elements
+my_set.add(6)                   # Add an item
+print("After add:", my_set)
+my_set.remove(3)                # Remove a specific item
+print("After remove:", my_set)
+
+# Set operations
+set_a = {1, 2, 3}
+set_b = {3, 4, 5}
+print("Union:", set_a | set_b)        # Union of sets
+print("Intersection:", set_a & set_b) # Intersection of sets
+print("Difference:", set_a - set_b)   # Difference of sets
+print("Symmetric Difference:", set_a ^ set_b) # Items in either set but not both
