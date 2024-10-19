@@ -1,0 +1,10 @@
+# Find the union and intersection of multiple sets entered by the user
+set1 = set(input("Enter elements of the first set separated by spaces: ").split())
+set2 = set(input("Enter elements of the second set separated by spaces: ").split())
+set3 = set(input("Enter elements of the third set separated by spaces: ").split())
+
+union_set = set1 | set2 | set3
+intersection_set = set1 & set2 & set3
+
+print("Union of sets:", union_set)
+print("Intersection of sets:", intersection_set)
